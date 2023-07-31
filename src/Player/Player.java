@@ -9,12 +9,11 @@ import Inventory.Inventory;
 
 import java.util.Scanner;
 
-public class Player extends Character {
+public class Player {
     private String name;
     //private Inventory inventory;
 
-    public Player(int id, int damage, int healty, int money, String characterName, String name/*, Inventory inventory*/){
-        super(id, damage, healty, money, characterName);
+    public Player(String name/*, Inventory inventory*/){
         this.name = name;
         //this.inventory = inventory;
     }
@@ -48,30 +47,28 @@ public class Player extends Character {
     public void selectCharacter() {
         Scanner scan = new Scanner(System.in);
 
-        System.out.print("  Character name : ");
-        String name = scan.nextLine();
-        setName(name.equals("") ? "Player 1" : name);
-
         printCharacter();
-        System.out.print("\n  *********  Welcome "+ getName());
-        System.out.print(", Please Select Character To Continue  *********" +
-                "\n  Character ID : ");
-        int selectNumber = scan.nextInt();
 
-        switch (selectNumber){
-            case 1:
-                System.out.println("\n  You Are " + createCharacter()[0].getCharacterName() +" anymore");
+        while (true) {
+            System.out.print("\n  Character ID : ");
+            int selectNumber = scan.nextInt();
+            switch (selectNumber){
+                case 1:
+                    System.out.println("\n  You Are " + createCharacter()[0].getCharacterName() +" anymore");
+                    break;
+                case 2:
+                    System.out.println("\n  You Are " + createCharacter()[1].getCharacterName()+" anymore");
+                    break;
+                case 3:
+                    System.out.println("\n  You Are " + createCharacter()[2].getCharacterName()+" anymore");
+                    break;
+                default:
+                    System.out.println("\n  You made the wrong choice. Try again!");
+            }
+
+            if(selectNumber == 1 || selectNumber == 2 || selectNumber == 3){
                 break;
-            case 2:
-                System.out.println("\n  You Are " + createCharacter()[1].getCharacterName()+" anymore");
-                break;
-            case 3:
-                System.out.println("\n  You Are " + createCharacter()[2].getCharacterName()+" anymore");
-                break;
-            default:
-                System.out.println("\n  You made the wrong choice. Try again!");
+            }
         }
-
     }
-
 }
