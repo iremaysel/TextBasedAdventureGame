@@ -9,12 +9,12 @@ public class Materials extends Inventory {
     }
 
 
-    public static Inventory[] createMaterial(){
-        Inventory food = new Food();
-        Inventory water = new Water();
-        Inventory firewood = new Firewood();
+    public static Materials[] createMaterial(){
+        Materials food = new Food();
+        Materials water = new Water();
+        Materials firewood = new Firewood();
 
-        Inventory[] materials = {food, water, firewood};
+        Materials[] materials = {food, water, firewood};
 
         return materials;
     }
