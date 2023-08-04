@@ -1,5 +1,7 @@
 package Obstacle;
 import Character.Character;
+import Inventory.DefenseInventory.DefenseInventory;
+import Inventory.Materials.Materials;
 
 import java.util.Random;
 
@@ -7,7 +9,7 @@ public class Obstacle extends Character {
     private int numberOfMonster;
 
     public Obstacle(int id, int damage, int healty, int money, String characterName, int numberOfMonster){
-        super(id, damage, healty, money, characterName);
+        super(id, damage, healty, money, characterName, Materials.createMaterial());
         this.numberOfMonster = numberOfMonster;
     }
 
