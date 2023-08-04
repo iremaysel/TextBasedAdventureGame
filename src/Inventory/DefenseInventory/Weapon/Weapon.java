@@ -1,6 +1,8 @@
 package Inventory.DefenseInventory.Weapon;
 
 import Inventory.DefenseInventory.DefenseInventory;
+import Character.Character;
+import java.util.Scanner;
 
 public class Weapon extends DefenseInventory {
     public Weapon(String name, boolean status, String defenseName, int id, int damage, int money) {
@@ -37,4 +39,30 @@ public class Weapon extends DefenseInventory {
         }
         System.out.println(title2Weapon);
     }
+
+    public static DefenseInventory purchasedWeapon(int weaponID, DefenseInventory choiceInventory, Character character){
+        Scanner scan = new Scanner(System.in);
+        DefenseInventory weapon = null;
+
+        Weapon.printWeapon();
+
+        while (choiceInventory == null){
+            System.out.print("\n  What Weapon do you want to choose?\n  Press 0 to exit | Weapon ID : ");
+            weaponID = scan.nextInt();
+            if (weaponID > 0 || weaponID <= Weapon.createWeapon().length){
+                weapon = Weapon.choiceWeapon(weaponID);
+                if(weapon.getMoney() <= character.getMoney()){
+                    choiceInventory = weapon;
+                } else {
+                    System.out.println("\n  You don't have enough money");
+                }
+            } else if (weaponID == 0) {
+                break;
+            } else {
+                System.out.println("\n  You made the wrong choice. Try again!");
+            }
+        }
+        return choiceInventory;
+    }
+
 }
