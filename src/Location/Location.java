@@ -5,7 +5,6 @@ import Location.BattleLoc.BattleLoc;
 import Location.SafeLoc.ShoppingStore;
 import Obstacle.Obstacle;
 
-import java.security.PublicKey;
 import java.util.Scanner;
 
 public class Location {
@@ -61,25 +60,24 @@ public class Location {
         ShoppingStore.printShopping();
     }
 
-    public static void selectLocation(){
+    public static Location selectLocation(){
         Scanner scan = new Scanner(System.in);
-
+        Location l = null;
         Location.printLocation();
 
         System.out.print("\n  Press B for Battlefield and Press S to shop (B/S) : ");
         String location = scan.next();
 
         if (location.toUpperCase().equals("B")){
-            BattleLoc.selectBattleLoc();
+            return BattleLoc.selectBattleLoc();
         } else if (location.toUpperCase().equals("S")) {
-            System.out.println("\n  Devam Edecek..");
+            return ShoppingStore.selectShoppingLoc();
+        } else {
+            System.out.println("\n  You made the wrong choice. Try again!");
+            selectLocation();
         }
+
+        return l;
     }
-
-
-    // player : Player
-    // name : String
-    // location() : void
-    // onLocation : boolean
 
 }
