@@ -19,11 +19,13 @@ public class Weapon extends DefenseInventory {
         return armorArr;
     }
 
-    public static DefenseInventory choiceWeapon(int armorID){
-        //Seçilen Armor Listesini Döndürecek
-        DefenseInventory[] choiceArmorArr = createWeapon();
-        DefenseInventory choiceArmor = choiceArmorArr[armorID];
-        return choiceArmor;
+    public static DefenseInventory choiceWeapon(int weaponID){
+        DefenseInventory[] createWeapon = createWeapon();
+        DefenseInventory choiceWeapon = null;
+        for (DefenseInventory d : createWeapon){
+            if(d.getId() == weaponID) choiceWeapon = d;
+        }
+        return choiceWeapon;
     }
 
     public static void printWeapon(){
@@ -49,15 +51,13 @@ public class Weapon extends DefenseInventory {
         while (choiceInventory == null){
             System.out.print("\n  What Weapon do you want to choose?\n  Press 0 to exit | Weapon ID : ");
             weaponID = scan.nextInt();
-            if (weaponID > 0 || weaponID <= Weapon.createWeapon().length){
+            if (weaponID > 0 && weaponID <= Weapon.createWeapon().length){
                 weapon = Weapon.choiceWeapon(weaponID);
                 if(weapon.getMoney() <= character.getMoney()){
                     choiceInventory = weapon;
                 } else {
                     System.out.println("\n  You don't have enough money");
                 }
-            } else if (weaponID == 0) {
-                break;
             } else {
                 System.out.println("\n  You made the wrong choice. Try again!");
             }
