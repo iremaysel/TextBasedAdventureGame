@@ -1,6 +1,9 @@
 package Inventory.DefenseInventory.Armor;
 
 import Inventory.DefenseInventory.DefenseInventory;
+import Character.Character;
+
+import java.util.Scanner;
 
 public class Armor extends DefenseInventory {
     public Armor(String name,boolean status, String defenseName, int id, int damage, int money) {
@@ -18,9 +21,11 @@ public class Armor extends DefenseInventory {
     }
 
     public static DefenseInventory choiceArmor(int armorID){
-        //Seçilen Armor Listesini Döndürecek
-        DefenseInventory[] choiceArmorArr = createArmor();
-        DefenseInventory choiceArmor = choiceArmorArr[armorID];
+        DefenseInventory[] crateArmor = createArmor();
+        DefenseInventory choiceArmor = null;
+        for (DefenseInventory d : crateArmor) {
+            if (d.getId() == armorID) choiceArmor = d;
+        }
         return choiceArmor;
     }
 
@@ -36,5 +41,28 @@ public class Armor extends DefenseInventory {
             System.out.print("  " + x.getMoney() + " \t\t\n");
         }
         System.out.println(title2Armor);
+    }
+
+    public static DefenseInventory purchasedArmor(int armorID, DefenseInventory choiceInventory, Character character){
+        Scanner scan = new Scanner(System.in);
+        DefenseInventory armor = null;
+
+        Armor.printArmor();
+
+        while (choiceInventory == null){
+            System.out.print("\n  What Armor do you want to choose? \n  Press 0 to exit | Armor ID  : ");
+            armorID = scan.nextInt();
+            if (armorID > 0 && armorID <= Armor.createArmor().length){
+                armor = Armor.choiceArmor(armorID);
+                if (armor.getMoney() <= character.getMoney()){
+                    choiceInventory = armor;
+                } else {
+                    System.out.println("\n  You don't have enough money");
+                }
+            } else {
+                System.out.println("\n  You made the wrong choice. Try again!");
+            }
+        }
+        return choiceInventory;
     }
 }
