@@ -1,7 +1,6 @@
 package Character;
 
 import Inventory.DefenseInventory.DefenseInventory;
-import Inventory.Inventory;
 import Inventory.Materials.Materials;
 
 import java.util.Scanner;
@@ -16,14 +15,14 @@ public class Character {
 
     private DefenseInventory[][] defenseInventory;
 
-    public Character(int id, int damage, int healty, int money, String characterName, Materials[] inventories, DefenseInventory[][] defenseInventory){
+    public Character(int id, int damage, int healty, int money, String characterName, Materials[] inventories){
         this.id = id;
         this.damage = damage;
         this.healty = healty;
         this.money = money;
         this.characterName = characterName;
         this.inventories = Materials.createMaterial();
-        this.defenseInventory = DefenseInventory.createDefenseInventory();
+        this.defenseInventory =DefenseInventory.createDefenseInventory();//new DefenseInventory[DefenseInventory.createDefenseInventory().length][DefenseInventory.createDefenseInventory().length];
     }
     public int getId() {
         return id;
@@ -76,7 +75,7 @@ public class Character {
     }
 
     public void setDefenseInventory(DefenseInventory[][] defenseInventory) {
-        this.defenseInventory = defenseInventory;
+        this.defenseInventory = DefenseInventory.createDefenseInventory();
     }
 
     public static Character choiceCharacter(int characterID){
