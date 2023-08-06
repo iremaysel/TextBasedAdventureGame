@@ -8,7 +8,6 @@ public class Materials extends Inventory {
         super(name, status);
     }
 
-
     public static Materials[] createMaterial(){
         Materials food = new Food();
         Materials water = new Water();
@@ -19,9 +18,8 @@ public class Materials extends Inventory {
         return materials;
     }
 
-    public static void printMaterials(){
-        Inventory[] materials = createMaterial();
-        System.out.println("  Materials  |  Your spoils");
+    public static void printMaterials(Inventory[] materials){
+        System.out.println("    Materials      |  Your spoils");
         for (Inventory m : materials) {
             int status;
             if (m.getStatus()==false)
@@ -29,11 +27,11 @@ public class Materials extends Inventory {
             else {
                 status = 1;
             }
-            System.out.print("  " + m.getName() + "  \t");
-            System.out.print("  " + status + "  \t\n");
+            System.out.print("     * " + m.getName() + "  \t");
+            System.out.print("       " + status + "  \t\n");
         }
-
     }
+
     public static Inventory choiceMaterial(String materialName){
         Inventory[] materials = createMaterial();
 
