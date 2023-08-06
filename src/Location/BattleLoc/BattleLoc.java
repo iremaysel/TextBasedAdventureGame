@@ -23,15 +23,14 @@ public class BattleLoc extends Location {
     public static void printBattleLoc(){
         Location[] battleLoc = createLocation();
 
-        String title = "  Location  |  BattleID  |  Obstacle  |  Piece  |  Inventory  |";
-        String title2 = "  ----------------------------------------------------";
+        String title = "  Location  |  BattleID  |  Obstacle  |  Damage  |  Healty  |  Inventory  |";
+        String title2 = "  --------------------------------------------------------------------------";
         System.out.println("\n" + title + "\n" + title2);
         for (Location l :battleLoc ) {
-            System.out.print("  " + l.getName() + " \t  ");
-            System.out.print("  " + l.getBattleID() + " \t  ");
-            System.out.print("  " + l.getObstacle().getCharacterName() + " \t  ");
-            System.out.print("  " + l.getObstacle().getNumberOfMonster() + " \t\t ");
-            System.out.print("  " + l.getInventory().getName() + " \t\t\n");
+            System.out.printf("  %-9s |  %-9s |  %-9s |  %-7d |  %-7d |  %-11s|\n",
+                    l.getName(), l.getBattleID(), l.getObstacle().getCharacterName(),
+                    l.getObstacle().getDamage(), l.getObstacle().getHealty(),
+                    l.getInventory().getName());
         }
     }
 
@@ -56,6 +55,7 @@ public class BattleLoc extends Location {
                     break;
                 default:
                     System.out.println("\n  You made the wrong choice. Try again!");
+                    break;
             }
             if (selectNumber >= 1 && selectNumber < battleLocs.length+1){
                 choiceReturn = battleLocs[selectNumber-1];

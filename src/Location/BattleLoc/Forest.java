@@ -1,6 +1,5 @@
 package Location.BattleLoc;
 
-import Inventory.Inventory;
 import Inventory.Materials.Materials;
 import Obstacle.Obstacle;
 

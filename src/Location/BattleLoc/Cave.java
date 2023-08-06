@@ -1,9 +1,6 @@
 package Location.BattleLoc;
 
-import Inventory.Inventory;
-import Inventory.Materials.Food;
 import Inventory.Materials.Materials;
-import Location.Location;
 import Obstacle.Obstacle;
 
 public class Cave extends BattleLoc {
