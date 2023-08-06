@@ -30,14 +30,12 @@ public class Weapon extends DefenseInventory {
 
     public static void printWeapon(){
         DefenseInventory[] weapon = createWeapon();
-        String titleWeapon = "  Weapon  |  ID  |  DAMAGE  |  MONEY  |";
+        String titleWeapon = "     Weapon     |    ID    |  DAMAGE  |  MONEY  |";
         String title2Weapon = "  ----------------------------------------------------";
         System.out.println("\n" + titleWeapon + "\n" + title2Weapon);
         for (DefenseInventory x : weapon) {
-            System.out.print("  " + x.getName() + " \t ");
-            System.out.print(x.getId() + " \t  ");
-            System.out.print("  " + x.getDamage() + " \t\t ");
-            System.out.print("  " + x.getMoney() + " \t\t\n");
+            System.out.printf("     %-10s|    %-6s|    %-6d|    %-5d|\n",
+                    x.getName(), x.getId(), x.getDamage(), x.getMoney());
         }
         System.out.println(title2Weapon);
     }

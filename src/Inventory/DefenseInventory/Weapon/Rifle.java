@@ -1,6 +1,5 @@
 package Inventory.DefenseInventory.Weapon;
 
-
 public class Rifle extends Weapon {
 
     public Rifle() {
