@@ -31,14 +31,12 @@ public class Armor extends DefenseInventory {
 
     public static void printArmor(){
         DefenseInventory[] armor = createArmor();
-        String titleArmor = "  ARMOR  |  ID  |  DAMAGE  |  MONEY  |";
+        String titleArmor = "     ARMOR     |    ID    |  DAMAGE  |  MONEY  |";
         String title2Armor = "  ----------------------------------------------------";
         System.out.println("\n" + titleArmor + "\n" + title2Armor);
         for (DefenseInventory x : armor) {
-            System.out.print("  " + x.getName() + " \t ");
-            System.out.print(x.getId() + " \t  ");
-            System.out.print("  " + x.getDamage() + " \t\t ");
-            System.out.print("  " + x.getMoney() + " \t\t\n");
+            System.out.printf("     %-10s|    %-6s|    %-6d|    %-5d|\n",
+                    x.getName(), x.getId(), x.getDamage(), x.getMoney());
         }
         System.out.println(title2Armor);
     }

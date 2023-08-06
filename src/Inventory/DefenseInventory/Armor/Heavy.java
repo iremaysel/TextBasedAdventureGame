@@ -1,7 +1,5 @@
 package Inventory.DefenseInventory.Armor;
 
-import Inventory.DefenseInventory.DefenseInventory;
-
 public class Heavy extends Armor {
 
     public Heavy() {
