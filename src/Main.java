@@ -1,12 +1,7 @@
 import Game.Game;
-import Player.Player;
-
-import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        //Player player = new Player("deneme");
-        Game game = new Game();
-        game.start();
+        Game.startPlay();
     }
 }
