@@ -22,7 +22,7 @@ public class Character {
         this.money = money;
         this.characterName = characterName;
         this.inventories = Materials.createMaterial();
-        this.defenseInventory =DefenseInventory.createDefenseInventory();//new DefenseInventory[DefenseInventory.createDefenseInventory().length][DefenseInventory.createDefenseInventory().length];
+        this.defenseInventory =DefenseInventory.createDefenseInventory();
     }
     public int getId() {
         return id;
@@ -104,12 +104,11 @@ public class Character {
         String title = "  Character  |  ID  |  Damage  |  Healty  |  Money  |";
         String title2 = "  ----------------------------------------------------";
         System.out.println("\n" + title + "\n" + title2);
-        for (Character c :characters ) {
-            System.out.print("  " + c.getCharacterName() + " \t  ");
-            System.out.print("  " + c.getId() + " \t  ");
-            System.out.print("  " + c.getDamage() + " \t\t ");
-            System.out.print("  " + c.getHealty() + " \t\t");
-            System.out.print("  " + c.getMoney() + "  \n");
+
+        for (Character c : characters) {
+            System.out.printf("  %-11s|  %-3s |  %-6d |  %-6d  |  %-5d  |\n",
+                    c.getCharacterName(), c.getId(), c.getDamage(),
+                    c.getHealty(), c.getMoney());
         }
     }
     public static Character selectCharacter() {
@@ -121,23 +120,25 @@ public class Character {
 
         while (choiceCharacter == null) {
             System.out.print("\n  Character ID : ");
-            int selectNumber = scan.nextInt();
+            String selectNumber = scan.next();
 
             switch (selectNumber){
-                case 1:
-                    System.out.println("\n  You Are " + createCharacter()[0].getCharacterName() +" anymore");
+                case "1":
+                    System.out.println("\n  You Are " + createCharacter()[Integer.parseInt(selectNumber)-1].getCharacterName() +" anymore");
                     break;
-                case 2:
-                    System.out.println("\n  You Are " + createCharacter()[1].getCharacterName()+" anymore");
+                case "2":
+                    System.out.println("\n  You Are " + createCharacter()[Integer.parseInt(selectNumber)-1].getCharacterName()+" anymore");
                     break;
-                case 3:
-                    System.out.println("\n  You Are " + createCharacter()[2].getCharacterName()+" anymore");
+                case "3":
+                    System.out.println("\n  You Are " + createCharacter()[Integer.parseInt(selectNumber)-1].getCharacterName()+" anymore");
                     break;
                 default:
                     System.out.println("\n  You made the wrong choice. Try again!");
+                    continue;
             }
-            if(selectNumber >= 1 && selectNumber < player.length+1){
-                choiceCharacter = player[selectNumber - 1];
+            int selectNum = Integer.parseInt(selectNumber);
+            if(selectNum >= 1 && selectNum < player.length+1){
+                choiceCharacter = player[selectNum - 1];
                 return choiceCharacter;
             }
         }

@@ -1,6 +1,5 @@
 package Character;
 
-import Inventory.DefenseInventory.DefenseInventory;
 import Inventory.Materials.Materials;
 
 public class Archer extends Character {
