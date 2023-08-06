@@ -65,7 +65,8 @@ public class ShoppingStore extends Location {
                 case 1:
                     Armor.printArmor();
                     Weapon.printWeapon();
-                    System.out.println("  A --> Armor");
+                    System.out.println("\n  Character Money : " + character.getMoney());
+                    System.out.println("\n  A --> Armor");
                     System.out.println("  W --> Weapon");
                     System.out.println("  Q --> Quit");
                     choiceInventory = ShoppingStore.shopInventory(choiceInventory, character);

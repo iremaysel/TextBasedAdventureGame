@@ -53,7 +53,7 @@ public class Location {
     }
 
     public static void printLocation(){
-        System.out.println("  XXXXXXXXXXXXXXXXXX BATTLE GROUNDS XXXXXXXXXXXXXXXXXX");
+        System.out.println("\n  XXXXXXXXXXXXXXXXXXXXXXXXXXXX BATTLE GROUNDS XXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         BattleLoc.printBattleLoc();
 
         System.out.println("\n  *----------------- SHOPPING STORE -----------------*");
